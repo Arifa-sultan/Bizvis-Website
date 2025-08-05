@@ -8,6 +8,30 @@ import { Button } from "@/components/ui/button"
 import { Play, Apple } from "lucide-react"
 import Image from "next/image"
 
+import Link from "next/link"
+const perks = [
+  {
+    icon: "/images/contact1.svg",
+    title: "Founding Member Badge",
+    description: "Your legacy status forever in-app",
+  },
+  {
+    icon: "/images/contact2.svg",
+    title: "First Access",
+    description: "Be first to experience Bizvis",
+  },
+  {
+    icon: "/images/contact3.svg",
+    title: "VIP Invites",
+    description: "Get launch event perks as they drop—all complimentary",
+  },
+  {
+    icon: "/images/contact4.svg",
+    title: "Exclusive Perks",
+    description: "Free events, discounts, and more from partner venues",
+  },
+]
+
 export default function HomePage() {
   const [showModal, setShowModal] = useState(false)
   const [modalVariant, setModalVariant] = useState<1 | 2 | 3>(1)
@@ -22,87 +46,72 @@ export default function HomePage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-50 pb-16 px-4 h-screen overflow-hidden">
-        <Image
-          alt="pic"
-          src="/images/herobg.png"
-          fill
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        />
-        <div className="container mx-auto text-center z-40">
-          <div className="max-w-4xl mx-auto mb-12 z-20">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight z-40">
-              SEE BEFORE YOU <span className="text-[#4DEF08]">GO</span>...
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-                STREAM TO BE CHOSEN!
-              </span>
-            </h1>
-            <p className="text-gray-300 text-lg md:text-xl mb-6 leading-relaxed">
-              Bizvis is redefining how businesses and customers connect through live streaming. Our platform enables
-              real-time interactions, allowing customers to see before they go and businesses to showcase their
-              offerings dynamically.
-            </p>
+      <section className="pt-24 pb-16 px-4 min-h-screen overflow-hidden"
+        style={
+          {
+            backgroundImage: "url('/images/hero.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }
+        }>
+        <div className="container mx-auto text-center flex items-center justify-center  h-screen">
+          <div className="max-w-7xl mx-auto w-full  mb-12 flex justify-between items-center ">
+            <div className="text-left max-w-2xl w-full ">
+              <h1 className="text-xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                SEE BEFORE YOU{" "}
+                <span className="text-[#4DEF08] ">GO...</span>
+              </h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                STREAM TO BE{" "}
+                <span className="text-[#029CF6] ">CHOSEN</span>
+              </h1>
+              <p className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
+                <span className="font-bold"> Get Early access to See real-time live views of restaurants, gyms, clubs, and events</span> — so you can make
+                smart, informed choices before stepping out.
+              </p>
 
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative max-w-2xl mx-auto">
-            <div className="relative">
-              {/* Play button overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
-                  <Play size={24} className="text-white ml-1" />
-                </div>
-              </div>
+            </div>
+            <div className="flex items-center justify-center space-x-2  max-w-2xl w-full ">
+              <Image src={'/images/playbtn.png'} alt="play icon" width={100} height={100} className="w-[200px]" />
             </div>
           </div>
         </div>
       </section>
-
+      <section
+        className="min-h-screen "
+        style={
+          {
+            backgroundImage: "url('/images/heroo.jpeg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }
+        }>
+      </section>
       {/* What is Bizvis Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              What is <span className="text-blue-400">Bizvis</span>?
-            </h2>
+      <section className="py-16 px-4 bg-gray-900">
+        <div className="container mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            What is <span className="text-3xl md:text-4xl text-[#029CF6] mb-20 font-semibold " >Bizvis</span>
+          </h2>
+          <p >
+
+          </p>
+
+          <div className="grid md:grid-cols-4 gap-6 mb-16 ">
+            {perks.map((perk, index) => (
+              <div key={index} className="bg-transparent border cursor-pointer border-gray-700 rounded-[10px] p-6 text-left hover:border-blue-500 transition-colors">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mb-4 text-xl text-white ">
+                  <Image src={perk.icon} alt={perk.description} width={10} height={10} className="w-[20px]" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-3">{perk.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{perk.description}</p>
+              </div>
+            ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center border border-[#ffff] rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[20px] p-3">
-              <div className="w-16 h-16 bg-blue-500   rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Live Before You Go</h3>
-              <p className="text-gray-300">See businesses in real-time before making your decision to visit.</p>
-            </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Business Streaming</h3>
-              <p className="text-gray-300">Showcase your business live to attract more customers.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">Smart Connections</h3>
-              <p className="text-gray-300">Connect customers with businesses through intelligent matching.</p>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <p className="text-gray-300 mb-6">See Before You Go</p>
-            <div className="flex justify-center space-x-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-              <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
-              <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -170,15 +179,10 @@ export default function HomePage() {
                 Request Early Access - For Businesses
               </Button>
             </div>
+            <div className="max-w-[500px] max-w-full">
 
-            <div className="relative">
-              <div className="bg-gray-800 rounded-2xl p-4">
-                <div className="bg-gray-900 rounded-xl h-64 md:h-80 flex items-center justify-center">
-                  {/* <span className="text-gray-500 text-lg">Business Dashboard Preview</span> */}
-                  <Image alt="logo" src={"/images/landing2.png"} height={100} width={55} />
-                </div>
+              <Image alt="logo" src={"/images/landing2.png"} height={100} width={100} className="w-full" />
               </div>
-            </div>
           </div>
         </div>
       </section>
@@ -195,27 +199,22 @@ export default function HomePage() {
             Experience the next generation of business-customer interactions through live streaming technology.
           </p>
 
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-gray-800 rounded-2xl p-4">
-              <div className="bg-gray-900 rounded-xl h-64 md:h-96 flex items-center justify-center">
-                <Image alt="logo" src={"/images/landing2.png"} height={100} width={55} />
-              </div>
-            </div>
-          </div>
+          
         </div>
+        <div className="max-w-[700px] w-full mx-auto">
+
+              <Image alt="logo" src={"/images/landing2.png"} height={100} width={100} className="w-full" />
+              </div>
       </section>
 
       {/* For Customers Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="bg-gray-800 rounded-2xl p-4">
-                <div className="bg-gray-900 rounded-xl aspect-[9/16] max-w-xs mx-auto flex items-center justify-center">
-                  <Image alt="logo" src={"/images/landing 4.png"} height={100} width={55} />
-                </div>
+            <div className="max-w-[300px] w-full mx-auto">
+
+              <Image alt="logo" src={"/images/landing 4.png"} height={100} width={100} className="w-full" />
               </div>
-            </div>
 
             <div className="order-1 lg:order-2">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">For Customers</h2>
@@ -275,25 +274,23 @@ export default function HomePage() {
       </section>
 
       {/* Smarter Decisions Section */}
-      <section className="py-16 px-4">
+       <section className="py-16 px-4">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            <span className="text-blue-400">Smarter Decisions,</span>
+            Smarter <span className="text-blue-400">Decision</span>
             <br />
-            <span className="text-blue-400">Informed Experience</span>
+            <span className="text-blue-400">informed</span> experience
           </h2>
           <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">
-            Make better choices with real-time insights and live business previews.
+            Experience the next generation of business-customer interactions through live streaming technology.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-12">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-gray-800 rounded-xl aspect-[9/16] flex items-center justify-center">
-                <span className="text-gray-500 text-xs">App Screen {i}</span>
-              </div>
-            ))}
-          </div>
+          
         </div>
+        <div className="max-w-[700px] w-full mx-auto">
+
+              <Image alt="logo" src={"/images/mob.png"} height={100} width={100} className="w-full" />
+              </div>
       </section>
 
       {/* Coming Soon Section */}
@@ -392,19 +389,48 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4"
+      >
         <div className="container mx-auto text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Join the Future of Live Access</h2>
-            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-              Be among the first to experience the revolutionary way businesses and customers connect.
-            </p>
-            <Button
-              onClick={() => handleGetEarlyAccess(1)}
-              className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 rounded-full text-lg font-semibold"
-            >
-              Request Early Access
-            </Button>
+          <div className="  rounded-3xl   overflow-hidden  max-w-[1110px] h-[435px] mx-auto" style={
+            {
+              background: "url(/images/baner.jpeg) no-repeat center center",
+              backgroundSize: "cover",
+
+            }
+          }>
+
+            <div className=" h-[435px]  flex flex-col items-center justify-center text-center">
+              <div className="flex items-center justify-center">
+                <Link
+                  href="/"
+                  className="bg-[#093b58] hover:bg-[093b58]/50 border border-[#093b58] shadow shadow-[#093b58] text-white px-12 py-4 rounded-[4px] rounded-br-[18px] text-md  font-medium transition-colors"
+                >
+                  Business Early Access – Sign Up Now            </Link>
+              </div>
+              <p className="text-white/90 text-lg my-6">
+                Whether you're looking to discover places in real-time or promote<br /> your space, join us to be the first to
+                see Bizvis.
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Join the Future of Live Access</h2>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+                <Link
+                  href="/"
+                  className="bg-cyan-400 hover:bg-cyan-500 text-black border border-cyan-500  px-12 py-4 rounded-[4px] rounded-br-[18px] text-md  font-medium transition-colors"
+                >
+                  Explore Opportunities
+                </Link>
+                <Link
+                  href="#"
+                  onClick={() => setShowPartnership(true)}
+
+                  className="bg-yellow-500 hover:bg-yellow-600 border border-yellow-500  text-black px-12 py-4 rounded-[4px] rounded-br-[18px] text-md  font-medium transition-colors"
+                >
+                  Investment Opportunities            </Link>
+
+              </div>
+            </div>
           </div>
         </div>
       </section>

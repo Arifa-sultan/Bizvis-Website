@@ -13,6 +13,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Play } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+
 
 export default function BusinessSignupPage() {
   const [showThankYou, setShowThankYou] = useState(false)
@@ -34,88 +37,86 @@ export default function BusinessSignupPage() {
   }
 
   const venues = [
-    { name: "Taste District", type: "Restaurant", image: "/placeholder.svg?height=200&width=300" },
-    { name: "Pulse", type: "Fitness", image: "/placeholder.svg?height=200&width=300" },
-    { name: "Club Nexus", type: "Nightclub", image: "/placeholder.svg?height=200&width=300" },
-    { name: "Style Bay", type: "Retail", image: "/placeholder.svg?height=200&width=300" },
+    { name: "Taste District", type: "Restaurant", image: "/images/taste.png" },
+    { name: "Pulse", type: "Fitness", image: "/images/plusefit.png" },
+    { name: "Club Nexus", type: "Nightclub", image: "/images/club.png" },
+    { name: "Style Bay", type: "Retail", image: "/images/stylebay.png" },
   ]
 
-  const benefits = [
+const perks = [
     {
-      icon: "🏆",
-      title: "Founding Venue Badge",
+      icon: "/images/contact1.svg",
+      title: "Founding Member Badge",
       description: "Your legacy status forever in-app",
     },
     {
-      icon: "🆓",
-      title: "Free Setup Support",
-      description: "Personal onboarding assistance",
+      icon: "/images/contact2.svg",
+      title: "First Access",
+      description: "Be first to experience Bizvis",
     },
     {
-      icon: "🚀",
-      title: "Launch Promotion",
-      description: "Featured placement during app launch",
+      icon: "/images/contact3.svg",
+      title: "VIP Invites",
+      description: "Get launch event perks as they drop—all complimentary",
     },
     {
-      icon: "📈",
-      title: "Influence The Product",
-      description: "Shape features with direct feedback",
+      icon: "/images/contact4.svg",
+      title: "Exclusive Perks",
+      description: "Free events, discounts, and more from partner venues",
     },
   ]
+  
 
   return (
     <div className="min-h-screen bg-[#0B1426]">
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20"></div>
-        <div className="container mx-auto text-center relative z-10">
-          <div className="max-w-4xl mx-auto mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              STREAM TO BE{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">CHOSEN.</span>
-            </h1>
-            <p className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
-              Direct marketing, drive more traffic, and boost revenue — all through real-time streaming as potential
-              insights, and smart analytics. Gain a deeper understanding of your customer patterns and preferences to
-              grow smarter with Bizvis.
-            </p>
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold">
-              Business Early Access - Sign Up Now
-            </Button>
-          </div>
-
-          {/* Video Preview */}
-          <div className="relative max-w-2xl mx-auto mb-16">
-            <div className="relative">
-              <div className="w-full h-64 md:h-96 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 rounded-3xl flex items-center justify-center overflow-hidden">
-                <div className="text-6xl md:text-8xl font-bold text-white/20 transform rotate-12">BIZVIS</div>
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
-                  <Play size={24} className="text-white ml-1" />
-                </div>
+       <section className="pt-24 pb-16 px-4 min-h-screen overflow-hidden"
+        style={
+          {
+            backgroundImage: "url('/images/hero.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }
+        }>
+        <div className="container mx-auto text-center flex items-center justify-center  h-screen">
+          <div className="max-w-7xl mx-auto w-full  mb-12 flex justify-between items-center ">
+            <div className="text-left max-w-2xl w-full ">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                STREAM TO BE{" "}
+                <span className="text-[#029CF6] ">CHOSEN</span>
+              </h1>
+              <p className="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
+                <span className="font-bold"> Get Early access to See real-time live views of restaurants, gyms, clubs, and events</span> — so you can make
+                smart, informed choices before stepping out.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Link
+                  href="/business-signup"
+                  className="bg-[#029CF6]/50 hover:bg-blue-700 border border-[#029CF6] text-white px-4 py-4 rounded-[4px] rounded-br-[18px] text-sm font-medium transition-colors"
+                >
+            Business Early Access - Sign Up Now
+                </Link>
               </div>
             </div>
-          </div>
-
-          {/* Live Demo */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-gray-800/50 rounded-2xl p-6 mb-8">
-              <div className="relative">
-                <img
-                  src="/placeholder.svg?height=300&width=600"
-                  alt="Live restaurant demo"
-                  className="w-full h-64 md:h-80 object-cover rounded-xl"
-                />
-                <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg px-4 py-2">
-                  <p className="text-white text-sm font-medium">We went live on Bizvis.</p>
-                </div>
-              </div>
+            <div className="flex items-center justify-center space-x-2  max-w-2xl w-full ">
+              <Image src={'/images/playbtn.png'} alt="play icon" width={100} height={100} className="w-[200px]" />
             </div>
           </div>
         </div>
+      </section>
+      <section
+        className="min-h-screen "
+        style={
+          {
+            backgroundImage: "url('/images/sign up 1.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }
+        }>
       </section>
 
       {/* Built for Businesses Section */}
@@ -162,30 +163,34 @@ export default function BusinessSignupPage() {
       </section>
 
       {/* Early Access Benefits */}
-      <section className="py-16 px-4">
+      
+<section className="py-16 px-4 bg-gray-900">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Early Access <span className="text-blue-400">Real Advantage</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+           Early Access
           </h2>
-          <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">
-            Founding Venue Partners receive exclusive launch benefits and priority visibility
+          <p className="text-3xl md:text-4xl text-[#029CF6] mb-12 font-semibold">
+            — Real Advantage
           </p>
 
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                  {benefit.icon}
+          <div className="grid md:grid-cols-4 gap-6 mb-16 ">
+            {perks.map((perk, index) => (
+              <div key={index} className="bg-transparent border cursor-pointer border-gray-700 rounded-br-[30%] p-6 text-left hover:border-blue-500 transition-colors">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mb-4 text-xl text-white ">
+                  <Image src={perk.icon} alt={perk.description} width={10} height={10} className="w-[20px]" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-gray-300 text-sm">{benefit.description}</p>
+                <h3 className="text-white font-bold text-lg mb-3">{perk.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{perk.description}</p>
               </div>
             ))}
           </div>
 
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold">
+          <Link
+            href="/business-signup"
+            className="bg-[#029CF6]/50 hover:bg-blue-700 border border-[#029CF6] shadow shadow-[#029CF6]  text-white px-4 py-4 rounded-[4px] rounded-br-[18px] text-sm font-medium transition-colors"
+          >
             Business Early Access - Sign Up Now
-          </Button>
+          </Link>
         </div>
       </section>
 
@@ -243,7 +248,7 @@ export default function BusinessSignupPage() {
                   placeholder="Enter your email address"
                   value={formData.email}
                   onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                  className="bg-gray-800/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                  className="bg-gray-800/50 border-gray-600  text-white placeholder-gray-400 focus:border-blue-500 w-100"
                   required
                 />
               </div>
@@ -316,7 +321,7 @@ export default function BusinessSignupPage() {
 
             <Button
               type="submit"
-              className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-full text-lg font-semibold"
+              className="bg-[#029CF6]/50 hover:bg-blue-700 border border-[#029CF6] text-white px-6 mr-50  py-6 rounded-[4px]  text-sm font-medium transition-colors"
             >
               Submit
             </Button>
@@ -325,33 +330,46 @@ export default function BusinessSignupPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4">
+       <section className="py-16 px-4"
+      >
         <div className="container mx-auto text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-4 left-4 w-16 h-16 bg-cyan-400/20 rounded-full"></div>
-            <div className="absolute bottom-4 right-4 w-24 h-24 bg-purple-400/20 rounded-full"></div>
-            <div className="absolute top-1/2 right-8 w-8 h-8 bg-yellow-400/30 rounded-full"></div>
+          <div className="  rounded-3xl   overflow-hidden  max-w-[1110px] h-[435px] mx-auto" style={
+            {
+              background: "url(/images/baner.jpeg) no-repeat center center",
+              backgroundSize: "cover",
 
-            <div className="relative z-10">
-              <p className="text-white/90 text-lg mb-6">
-                Whether you're looking to discover places in real-time or promote your space, join us to be the first to
+            }
+          }>
+
+            <div className=" h-[435px]  flex flex-col items-center justify-center text-center">
+              <div className="flex items-center justify-center">
+                <Link
+                  href="/"
+                  className="bg-[#093b58] hover:bg-[093b58]/50 border border-[#093b58] shadow shadow-[#093b58] text-white px-12 py-4 rounded-[4px] rounded-br-[18px] text-md  font-medium transition-colors"
+                >
+                  Business Early Access – Sign Up Now            </Link>
+              </div>
+              <p className="text-white/90 text-lg my-6">
+                Whether you're looking to discover places in real-time or promote<br/> your space, join us to be the first to
                 see Bizvis.
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Join the Future of Live Access</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  onClick={() => setShowInvestment(true)}
-                  className="bg-cyan-400 hover:bg-cyan-500 text-black px-8 py-3 rounded-full text-lg font-semibold"
+                
+                <Link
+                  href="/"
+                  className="bg-cyan-400 hover:bg-cyan-500 text-black border border-cyan-500  px-12 py-4 rounded-[4px] rounded-br-[18px] text-md  font-medium transition-colors"
                 >
                   Explore Opportunities
-                </Button>
-                <Button
+                </Link>
+                <Link
+                  href="#"
                   onClick={() => setShowPartnership(true)}
-                  className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-3 rounded-full text-lg font-semibold"
-                >
-                  Investment Opportunities
-                </Button>
+
+                  className="bg-yellow-500 hover:bg-yellow-600 border border-yellow-500  text-black px-12 py-4 rounded-[4px] rounded-br-[18px] text-md  font-medium transition-colors"
+                  >
+                  Investment Opportunities            </Link>
+                 
               </div>
             </div>
           </div>

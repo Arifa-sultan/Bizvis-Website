@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-400 rounded-md flex items-center justify-center">
-              
+              <span className="text-white font-bold text-sm">B</span>
             </div>
             <span className="text-white font-semibold text-lg">Bizvis</span>
           </div>

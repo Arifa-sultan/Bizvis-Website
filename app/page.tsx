@@ -70,8 +70,8 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center border border-[#ffff] rounded-tl-[5px] rounded-tr-[5px] rounded-bl-[5px] rounded-br-[20px] p-3">
+              <div className="w-16 h-16 bg-blue-500   rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="w-8 h-8 bg-white rounded-full"></div>
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">Live Before You Go</h3>
